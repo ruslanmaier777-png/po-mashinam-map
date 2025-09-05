@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f4561407f34a3b4509146c7dfe4e5cf7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<style>
+.pulse-marker {
+  position: relative;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+}
+.pulse-marker::after {
+  content: "";
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0; left: 0;
+  background: rgba(255,0,0,0.3);
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 0.7; }
+  50% { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(0.8); opacity: 0.7; }
+}
+</style>
+    
+<div style="
+    position: fixed; 
+    bottom: 30px; left: 30px; width: 250px; 
+    background: white; padding: 12px; 
+    border-radius: 15px; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    z-index:9999;">
+<b>Легенда</b><br>
+⚔️ Памятник<br>
+🌿 Аллея<br>
+🏛 Усадьба<br><br>
+<b>Интерактивная карта мероприятия «По машинам»</b>
+</div>
+    
+<style>
+.leaflet-control-attribution {
+    display: none !important;
+}
+</style>
+    
+            <div class="folium-map" id="map_f4561407f34a3b4509146c7dfe4e5cf7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f4561407f34a3b4509146c7dfe4e5cf7 = L.map(
+                "map_f4561407f34a3b4509146c7dfe4e5cf7",
+                {
+                    center: [55.646091, 36.969835],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 16,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_f4561407f34a3b4509146c7dfe4e5cf7);
+
+            
+
+        
+    
+            var tile_layer_5734d87e1f00772389372386ec515026 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5734d87e1f00772389372386ec515026.addTo(map_f4561407f34a3b4509146c7dfe4e5cf7);
+        
+    
+            var marker_7cab2fb9cc6dd960c9400999ef29b3a0 = L.marker(
+                [55.646091, 36.969835],
+                {
+}
+            ).addTo(map_f4561407f34a3b4509146c7dfe4e5cf7);
+        
+    
+            var div_icon_060dea58e845aba2aedf360c008ef372 = L.divIcon({
+  "html": "\u003cdiv class=\u0027pulse-marker\u0027\u003e\u2694\ufe0f\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_e5d9a5dcc57c60b283ee443fcf818ea0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2af9c4f7dc2313e48f3ad060ee454bf4 = $(`<div id="html_2af9c4f7dc2313e48f3ad060ee454bf4" style="width: 100.0%; height: 100.0%;">     <style>     .card {         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;         padding: 12px;         border-radius: 15px;         background: #ffffff;         box-shadow: 0 8px 20px rgba(0,0,0,0.25);         width: 270px;     }     .card h4 {         margin: 0;         padding-bottom: 10px;         font-size: 20px;         border-bottom: 1px solid #ddd;         color: #2E7D32;     }     .tab input { display: none; }     .tab label {         display: block;         padding: 10px;         margin-top: 6px;         border-radius: 10px;         background: linear-gradient(90deg, #43cea2, #185a9d);         color: white;         font-size: 14px;         cursor: pointer;         text-align: center;         transition: all 0.3s ease;     }     .tab label:hover {         transform: scale(1.05);         background: linear-gradient(90deg, #6dd5ed, #2193b0);     }     .tab-content {         display: none;         margin-top: 10px;         font-size: 14px;         color: #333;     }     .tab input:checked + label + .tab-content {         display: block;     }     </style>      <div class="card">       <h4>Памятник</h4>        <div class="tab">         <input type="radio" id="p1_date" name="p1" checked>         <label for="p1_date">Дата создания</label>         <div class="tab-content">📅 1820 год</div>       </div>        <div class="tab">         <input type="radio" id="p1_builder" name="p1">         <label for="p1_builder">Кем построен</label>         <div class="tab-content">👷 Построен по приказу графа Орлова</div>       </div>        <div class="tab">         <input type="radio" id="p1_history" name="p1">         <label for="p1_history">История</label>         <div class="tab-content">📖 Возведён в честь героев Отечественной войны 1812 года. Символ мужества и памяти для жителей региона.</div>       </div>     </div>     </div>`)[0];
+                popup_e5d9a5dcc57c60b283ee443fcf818ea0.setContent(html_2af9c4f7dc2313e48f3ad060ee454bf4);
+            
+        
+
+        marker_7cab2fb9cc6dd960c9400999ef29b3a0.bindPopup(popup_e5d9a5dcc57c60b283ee443fcf818ea0)
+        ;
+
+        
+    
+    
+            marker_7cab2fb9cc6dd960c9400999ef29b3a0.bindTooltip(
+                `<div>
+                     Памятник
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7cab2fb9cc6dd960c9400999ef29b3a0.setIcon(div_icon_060dea58e845aba2aedf360c008ef372);
+            
+    
+            var marker_c57dcb59dc854cb5add07a7062f09103 = L.marker(
+                [55.6475, 36.9682],
+                {
+}
+            ).addTo(map_f4561407f34a3b4509146c7dfe4e5cf7);
+        
+    
+            var div_icon_13e34c7fb192484dcc6b5b3e316747ab = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:28px;\u0027\u003e\ud83c\udf3f\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_cd6996b3da84594924493f3b28afb0d1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_3cec5ae29b2d150f9284e30f2a436241 = $(`<div id="html_3cec5ae29b2d150f9284e30f2a436241" style="width: 100.0%; height: 100.0%;">     <style>     .card {         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;         padding: 12px;         border-radius: 15px;         background: #ffffff;         box-shadow: 0 8px 20px rgba(0,0,0,0.25);         width: 270px;     }     .card h4 {         margin: 0;         padding-bottom: 10px;         font-size: 20px;         border-bottom: 1px solid #ddd;         color: #2E7D32;     }     .tab input { display: none; }     .tab label {         display: block;         padding: 10px;         margin-top: 6px;         border-radius: 10px;         background: linear-gradient(90deg, #43cea2, #185a9d);         color: white;         font-size: 14px;         cursor: pointer;         text-align: center;         transition: all 0.3s ease;     }     .tab label:hover {         transform: scale(1.05);         background: linear-gradient(90deg, #6dd5ed, #2193b0);     }     .tab-content {         display: none;         margin-top: 10px;         font-size: 14px;         color: #333;     }     .tab input:checked + label + .tab-content {         display: block;     }     </style>      <div class="card">       <h4>Аллея</h4>        <div class="tab">         <input type="radio" id="p2_date" name="p2" checked>         <label for="p2_date">Дата создания</label>         <div class="tab-content">📅 1905 год</div>       </div>        <div class="tab">         <input type="radio" id="p2_builder" name="p2">         <label for="p2_builder">Кем построен</label>         <div class="tab-content">👷 Высажена учениками местной гимназии</div>       </div>        <div class="tab">         <input type="radio" id="p2_history" name="p2">         <label for="p2_history">История</label>         <div class="tab-content">📖 Создана как символ дружбы и памяти о студентах. Сегодня это популярное место прогулок.</div>       </div>     </div>     </div>`)[0];
+                popup_cd6996b3da84594924493f3b28afb0d1.setContent(html_3cec5ae29b2d150f9284e30f2a436241);
+            
+        
+
+        marker_c57dcb59dc854cb5add07a7062f09103.bindPopup(popup_cd6996b3da84594924493f3b28afb0d1)
+        ;
+
+        
+    
+    
+            marker_c57dcb59dc854cb5add07a7062f09103.bindTooltip(
+                `<div>
+                     Аллея
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c57dcb59dc854cb5add07a7062f09103.setIcon(div_icon_13e34c7fb192484dcc6b5b3e316747ab);
+            
+    
+            var marker_a2de20908b3d5aa635693d659c85febe = L.marker(
+                [55.6488, 36.9715],
+                {
+}
+            ).addTo(map_f4561407f34a3b4509146c7dfe4e5cf7);
+        
+    
+            var div_icon_67c4c39d5bafe16fe19a988053e395d0 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:28px;\u0027\u003e\ud83c\udfdb\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_be5e7e4b200f1f7d5271f4280788e571 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_86a314dc81360c898aa470fa4aacfc0f = $(`<div id="html_86a314dc81360c898aa470fa4aacfc0f" style="width: 100.0%; height: 100.0%;">     <style>     .card {         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;         padding: 12px;         border-radius: 15px;         background: #ffffff;         box-shadow: 0 8px 20px rgba(0,0,0,0.25);         width: 270px;     }     .card h4 {         margin: 0;         padding-bottom: 10px;         font-size: 20px;         border-bottom: 1px solid #ddd;         color: #2E7D32;     }     .tab input { display: none; }     .tab label {         display: block;         padding: 10px;         margin-top: 6px;         border-radius: 10px;         background: linear-gradient(90deg, #43cea2, #185a9d);         color: white;         font-size: 14px;         cursor: pointer;         text-align: center;         transition: all 0.3s ease;     }     .tab label:hover {         transform: scale(1.05);         background: linear-gradient(90deg, #6dd5ed, #2193b0);     }     .tab-content {         display: none;         margin-top: 10px;         font-size: 14px;         color: #333;     }     .tab input:checked + label + .tab-content {         display: block;     }     </style>      <div class="card">       <h4>Усадьба</h4>        <div class="tab">         <input type="radio" id="p3_date" name="p3" checked>         <label for="p3_date">Дата создания</label>         <div class="tab-content">📅 1785 год</div>       </div>        <div class="tab">         <input type="radio" id="p3_builder" name="p3">         <label for="p3_builder">Кем построен</label>         <div class="tab-content">👷 Построена по заказу князя Голицына</div>       </div>        <div class="tab">         <input type="radio" id="p3_history" name="p3">         <label for="p3_history">История</label>         <div class="tab-content">📖 Яркий пример архитектуры XVIII века. Здесь проводились культурные вечера с участием писателей и музыкантов.</div>       </div>     </div>     </div>`)[0];
+                popup_be5e7e4b200f1f7d5271f4280788e571.setContent(html_86a314dc81360c898aa470fa4aacfc0f);
+            
+        
+
+        marker_a2de20908b3d5aa635693d659c85febe.bindPopup(popup_be5e7e4b200f1f7d5271f4280788e571)
+        ;
+
+        
+    
+    
+            marker_a2de20908b3d5aa635693d659c85febe.bindTooltip(
+                `<div>
+                     Усадьба
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a2de20908b3d5aa635693d659c85febe.setIcon(div_icon_67c4c39d5bafe16fe19a988053e395d0);
+            
+</script>
+</html>
