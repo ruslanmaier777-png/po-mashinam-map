@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_598b20fbbd2d4670db48ee97d08388ae {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<style>
+.pulse-marker {
+  position: relative;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+}
+.pulse-marker::after {
+  content: "";
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0; left: 0;
+  background: rgba(255,0,0,0.3);
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(0.8); opacity: 0.7; }
+  50% { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(0.8); opacity: 0.7; }
+}
+</style>
+    
+<div style="
+    position: fixed; 
+    bottom: 30px; left: 30px; width: 280px; 
+    background: white; padding: 12px; 
+    border-radius: 15px; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    z-index:9999;">
+<b>Легенда</b><br>
+🛡️ Святые ворота<br>
+🏛️ Колонада<br>
+🌿 Терраса<br>
+🏰 Дворец<br><br>
+<b>Интерактивная карта мероприятия «По машинам»</b>
+</div>
+    
+<style>
+.leaflet-control-attribution {
+    display: none !important;
+}
+</style>
+    
+            <div class="folium-map" id="map_598b20fbbd2d4670db48ee97d08388ae" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_598b20fbbd2d4670db48ee97d08388ae = L.map(
+                "map_598b20fbbd2d4670db48ee97d08388ae",
+                {
+                    center: [55.682, 37.4965],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 16,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_598b20fbbd2d4670db48ee97d08388ae);
+
+            
+
+        
+    
+            var tile_layer_ba24ccaef578ccd88095e2e023afe736 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ba24ccaef578ccd88095e2e023afe736.addTo(map_598b20fbbd2d4670db48ee97d08388ae);
+        
+    
+            var marker_1fe70c6fdfd7563a4ed24cda0f8b1de5 = L.marker(
+                [55.683, 37.497],
+                {
+}
+            ).addTo(map_598b20fbbd2d4670db48ee97d08388ae);
+        
+    
+            var div_icon_99e01a313961b077e0b28dd74a5ac835 = L.divIcon({
+  "html": "\u003cdiv class=\u0027pulse-marker\u0027\u003e\ud83d\udee1\ufe0f\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_54c7ef71a008bae9c6b5b65fa1e117a1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0432573d5895b991efb436b215b001aa = $(`<div id="html_0432573d5895b991efb436b215b001aa" style="width: 100.0%; height: 100.0%;">     <style>     .card {         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;         padding: 12px;         border-radius: 15px;         background: #ffffff;         box-shadow: 0 8px 20px rgba(0,0,0,0.25);         width: 270px;     }     .card h4 {         margin: 0;         padding-bottom: 10px;         font-size: 20px;         border-bottom: 1px solid #ddd;         color: #2E7D32;     }     .tab input { display: none; }     .tab label {         display: block;         padding: 10px;         margin-top: 6px;         border-radius: 10px;         background: linear-gradient(90deg, #FF7E5F, #FEB47B);         color: white;         font-size: 14px;         cursor: pointer;         text-align: center;         transition: all 0.3s ease;     }     .tab label:hover {         transform: scale(1.05);         background: linear-gradient(90deg, #FFB88C, #FF7E5F);     }     .tab-content {         display: none;         margin-top: 10px;         font-size: 14px;         color: #333;     }     .tab input:checked + label + .tab-content {         display: block;     }     </style>      <div class="card">       <h4>Святые ворота</h4>        <div class="tab">         <input type="radio" id="a1_date" name="a1" checked>         <label for="a1_date">Дата/Происхождение</label>         <div class="tab-content">📅 Род Юсуповых, XIX в.</div>       </div>        <div class="tab">         <input type="radio" id="a1_builder" name="a1">         <label for="a1_builder">Личность/Создатель</label>         <div class="tab-content">👷 Род Юсуповых</div>       </div>        <div class="tab">         <input type="radio" id="a1_history" name="a1">         <label for="a1_history">История/Интересные факты</label>         <div class="tab-content">📖 История тесно связана с родом Юсуповых. Ворота считаются мистическими: желание, произнесённое искренне, может сбыться при соблюдении правил.</div>       </div>     </div>     </div>`)[0];
+                popup_54c7ef71a008bae9c6b5b65fa1e117a1.setContent(html_0432573d5895b991efb436b215b001aa);
+            
+        
+
+        marker_1fe70c6fdfd7563a4ed24cda0f8b1de5.bindPopup(popup_54c7ef71a008bae9c6b5b65fa1e117a1)
+        ;
+
+        
+    
+    
+            marker_1fe70c6fdfd7563a4ed24cda0f8b1de5.bindTooltip(
+                `<div>
+                     Святые ворота
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1fe70c6fdfd7563a4ed24cda0f8b1de5.setIcon(div_icon_99e01a313961b077e0b28dd74a5ac835);
+            
+    
+            var marker_c318ac9c0f2f5d45c4f1c8ee1645dfe3 = L.marker(
+                [55.6825, 37.4955],
+                {
+}
+            ).addTo(map_598b20fbbd2d4670db48ee97d08388ae);
+        
+    
+            var div_icon_880ad5a224867ce8cc2c5078b70427e2 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:28px;\u0027\u003e\ud83c\udfdb\ufe0f\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_ec66a469a8f8c207d7938d8ef7977f56 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9f847b5d571e8d1d0efa2db2e80eb1e7 = $(`<div id="html_9f847b5d571e8d1d0efa2db2e80eb1e7" style="width: 100.0%; height: 100.0%;">     <style>     .card {         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;         padding: 12px;         border-radius: 15px;         background: #ffffff;         box-shadow: 0 8px 20px rgba(0,0,0,0.25);         width: 270px;     }     .card h4 {         margin: 0;         padding-bottom: 10px;         font-size: 20px;         border-bottom: 1px solid #ddd;         color: #2E7D32;     }     .tab input { display: none; }     .tab label {         display: block;         padding: 10px;         margin-top: 6px;         border-radius: 10px;         background: linear-gradient(90deg, #FF7E5F, #FEB47B);         color: white;         font-size: 14px;         cursor: pointer;         text-align: center;         transition: all 0.3s ease;     }     .tab label:hover {         transform: scale(1.05);         background: linear-gradient(90deg, #FFB88C, #FF7E5F);     }     .tab-content {         display: none;         margin-top: 10px;         font-size: 14px;         color: #333;     }     .tab input:checked + label + .tab-content {         display: block;     }     </style>      <div class="card">       <h4>Колонада</h4>        <div class="tab">         <input type="radio" id="a2_date" name="a2" checked>         <label for="a2_date">Дата/Происхождение</label>         <div class="tab-content">📅 Конец XIX – начало XX в.</div>       </div>        <div class="tab">         <input type="radio" id="a2_builder" name="a2">         <label for="a2_builder">Личность/Создатель</label>         <div class="tab-content">👷 Архитектор Р.И. Клейн</div>       </div>        <div class="tab">         <input type="radio" id="a2_history" name="a2">         <label for="a2_history">История/Интересные факты</label>         <div class="tab-content">📖 Сооружение как храм-усыпальница для семьи Юсуповых. Включает элементы неоклассицизма и античного искусства.</div>       </div>     </div>     </div>`)[0];
+                popup_ec66a469a8f8c207d7938d8ef7977f56.setContent(html_9f847b5d571e8d1d0efa2db2e80eb1e7);
+            
+        
+
+        marker_c318ac9c0f2f5d45c4f1c8ee1645dfe3.bindPopup(popup_ec66a469a8f8c207d7938d8ef7977f56)
+        ;
+
+        
+    
+    
+            marker_c318ac9c0f2f5d45c4f1c8ee1645dfe3.bindTooltip(
+                `<div>
+                     Колонада
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c318ac9c0f2f5d45c4f1c8ee1645dfe3.setIcon(div_icon_880ad5a224867ce8cc2c5078b70427e2);
+            
+    
+            var marker_01f3667b5b4cfd3fe973b2ae8028e248 = L.marker(
+                [55.682, 37.4965],
+                {
+}
+            ).addTo(map_598b20fbbd2d4670db48ee97d08388ae);
+        
+    
+            var div_icon_0489ed4bbfc9a73081236d2b3a711eb4 = L.divIcon({
+  "html": "\u003cdiv style=\u0027font-size:28px;\u0027\u003e\ud83c\udf3f\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_01bd7ae5d939b3b839a6d29f20ac2aa4 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_53097ddf2ffcf517737e301deee7a611 = $(`<div id="html_53097ddf2ffcf517737e301deee7a611" style="width: 100.0%; height: 100.0%;">     <style>     .card {         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;         padding: 12px;         border-radius: 15px;         background: #ffffff;         box-shadow: 0 8px 20px rgba(0,0,0,0.25);         width: 270px;     }     .card h4 {         margin: 0;         padding-bottom: 10px;         font-size: 20px;         border-bottom: 1px solid #ddd;         color: #2E7D32;     }     .tab input { display: none; }     .tab label {         display: block;         padding: 10px;         margin-top: 6px;         border-radius: 10px;         background: linear-gradient(90deg, #FF7E5F, #FEB47B);         color: white;         font-size: 14px;         cursor: pointer;         text-align: center;         transition: all 0.3s ease;     }     .tab label:hover {         transform: scale(1.05);         background: linear-gradient(90deg, #FFB88C, #FF7E5F);     }     .tab-content {         display: none;         margin-top: 10px;         font-size: 14px;         color: #333;     }     .tab input:checked + label + .tab-content {         display: block;     }     </style>      <div class="card">       <h4>Терраса</h4>        <div class="tab">         <input type="radio" id="a3_date" name="a3" checked>         <label for="a3_date">Дата/Происхождение</label>         <div class="tab-content">📅 XIX в.</div>       </div>        <div class="tab">         <input type="radio" id="a3_builder" name="a3">         <label for="a3_builder">Личность/Создатель</label>         <div class="tab-content">👷 Парк Архангельское</div>       </div>        <div class="tab">         <input type="radio" id="a3_history" name="a3">         <label for="a3_history">История/Интересные факты</label>         <div class="tab-content">📖 Обзорная точка с бюстами Цезаря и Августа. Отличное место для фотографий и отдыха.</div>       </div>     </div>     </div>`)[0];
+                popup_01bd7ae5d939b3b839a6d29f20ac2aa4.setContent(html_53097ddf2ffcf517737e301deee7a611);
+            
+        
+
+        marker_01f3667b5b4cfd3fe973b2ae8028e248.bindPopup(popup_01bd7ae5d939b3b839a6d29f20ac2aa4)
+        ;
+
+        
+    
+    
+            marker_01f3667b5b4cfd3fe973b2ae8028e248.bindTooltip(
+                `<div>
+                     Терраса (итальянский парк)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_01f3667b5b4cfd3fe973b2ae8028e248.setIcon(div_icon_0489ed4bbfc9a73081236d2b3a711eb4);
+            
+    
+            var marker_b1edf604eef8a4c76aea09804b3a4372 = L.marker(
+                [55.6815, 37.496],
+                {
+}
+            ).addTo(map_598b20fbbd2d4670db48ee97d08388ae);
+        
+    
+            var div_icon_620349a46df25139885fcbaa73d0e18c = L.divIcon({
+  "html": "\u003cdiv class=\u0027pulse-marker\u0027\u003e\ud83c\udff0\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_eafb779c915e179d09c6c3886a78526d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b836a25af9484db73693c0a9c0cc9e9f = $(`<div id="html_b836a25af9484db73693c0a9c0cc9e9f" style="width: 100.0%; height: 100.0%;">     <style>     .card {         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;         padding: 12px;         border-radius: 15px;         background: #ffffff;         box-shadow: 0 8px 20px rgba(0,0,0,0.25);         width: 270px;     }     .card h4 {         margin: 0;         padding-bottom: 10px;         font-size: 20px;         border-bottom: 1px solid #ddd;         color: #2E7D32;     }     .tab input { display: none; }     .tab label {         display: block;         padding: 10px;         margin-top: 6px;         border-radius: 10px;         background: linear-gradient(90deg, #FF7E5F, #FEB47B);         color: white;         font-size: 14px;         cursor: pointer;         text-align: center;         transition: all 0.3s ease;     }     .tab label:hover {         transform: scale(1.05);         background: linear-gradient(90deg, #FFB88C, #FF7E5F);     }     .tab-content {         display: none;         margin-top: 10px;         font-size: 14px;         color: #333;     }     .tab input:checked + label + .tab-content {         display: block;     }     </style>      <div class="card">       <h4>Дворец</h4>        <div class="tab">         <input type="radio" id="a4_date" name="a4" checked>         <label for="a4_date">Дата/Происхождение</label>         <div class="tab-content">📅 1784–1810 гг.</div>       </div>        <div class="tab">         <input type="radio" id="a4_builder" name="a4">         <label for="a4_builder">Личность/Создатель</label>         <div class="tab-content">👷 Князь Николай Борисович Юсупов</div>       </div>        <div class="tab">         <input type="radio" id="a4_history" name="a4">         <label for="a4_history">История/Интересные факты</label>         <div class="tab-content">📖 Центр дворцово-паркового ансамбля. Памятник классицизма и художественного собрания Юсуповых. Музей с 1919 г.</div>       </div>     </div>     </div>`)[0];
+                popup_eafb779c915e179d09c6c3886a78526d.setContent(html_b836a25af9484db73693c0a9c0cc9e9f);
+            
+        
+
+        marker_b1edf604eef8a4c76aea09804b3a4372.bindPopup(popup_eafb779c915e179d09c6c3886a78526d)
+        ;
+
+        
+    
+    
+            marker_b1edf604eef8a4c76aea09804b3a4372.bindTooltip(
+                `<div>
+                     Дворец
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b1edf604eef8a4c76aea09804b3a4372.setIcon(div_icon_620349a46df25139885fcbaa73d0e18c);
+            
+</script>
+</html>
